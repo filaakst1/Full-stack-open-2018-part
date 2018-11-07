@@ -1,1 +1,1 @@
-# Full-stack-open-2018-part
+# Full-stack-open-2018-part6
