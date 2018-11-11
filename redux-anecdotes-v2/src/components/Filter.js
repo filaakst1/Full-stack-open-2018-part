@@ -20,7 +20,5 @@ class Filter extends React.Component {
   }
 }
 
-const ConnectedFilter = connect(null,{ filterChange })(Filter)
-
-export default ConnectedFilter
+export default connect(null,{ filterChange })(Filter)
 
