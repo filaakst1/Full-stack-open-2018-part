@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { voteAnecdote } from '../reducers/anecdoteReducer'
-import { createNotification, deleteNotification} from '../reducers/notificationReducer'
+import { voteNotification, deleteNotification } from '../reducers/notificationReducer'
 
 class AnecdoteList extends React.Component {
   componentDidMount() {
@@ -23,10 +23,12 @@ class AnecdoteList extends React.Component {
       voteAnecdote(id)
     )
     this.context.store.dispatch(
-      createNotification(anecdote.content)
+      voteNotification(anecdote.content)
     )
     setTimeout(() => {
-      deleteNotification()
+      this.context.store.dispatch(
+        deleteNotification()
+      )
     }, 5000)
   }
   render() {

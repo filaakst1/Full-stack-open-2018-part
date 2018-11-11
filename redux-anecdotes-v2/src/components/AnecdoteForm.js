@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { anecdoteCreation }  from '../reducers/anecdoteReducer'
-
+import {createNotification,deleteNotification } from '../reducers/notificationReducer'
 class AnecdoteForm extends React.Component {
   componentDidMount() {
     const { store } = this.context
@@ -21,6 +21,15 @@ class AnecdoteForm extends React.Component {
     this.context.store.dispatch(
       anecdoteCreation(content)
     )
+    this.context.store.dispatch(
+      createNotification(content)
+    )
+    setTimeout(() => {
+      this.context.store.dispatch(
+        deleteNotification()
+      )
+    }, 5000)
+
     e.target.anecdote.value = ''
   }
   render() {
