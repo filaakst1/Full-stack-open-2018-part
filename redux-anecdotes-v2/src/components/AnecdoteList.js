@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Filter from './Filter'
 import { voteAnecdote } from '../reducers/anecdoteReducer'
 import { voteNotification, deleteNotification } from '../reducers/notificationReducer'
 
@@ -36,6 +37,7 @@ class AnecdoteList extends React.Component {
     return (
       <div>
         <h2>Anecdotes</h2>
+        <Filter />
         {anecdotes.sort((a, b) => b.votes - a.votes).map(anecdote =>
           <div key={anecdote.id}>
             <div>
