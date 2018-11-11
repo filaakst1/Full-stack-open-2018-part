@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { voteAnecdote } from '../reducers/anecdoteReducer'
+import { createNotification, deleteNotification} from '../reducers/notificationReducer'
 
 class AnecdoteList extends React.Component {
   componentDidMount() {
@@ -15,9 +16,18 @@ class AnecdoteList extends React.Component {
   }
   voteAnecdote = (id) => (e) => {
     console.log('Vote click')
+    const { anecdotes } = this.context.store.getState()
+    const anecdote = anecdotes.find(a => a.id === id)
+
     this.context.store.dispatch(
       voteAnecdote(id)
     )
+    this.context.store.dispatch(
+      createNotification(anecdote.content)
+    )
+    setTimeout(() => {
+      deleteNotification()
+    }, 5000)
   }
   render() {
     const anecdotes = this.context.store.getState().anecdotes
