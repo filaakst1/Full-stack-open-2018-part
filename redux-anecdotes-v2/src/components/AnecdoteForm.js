@@ -28,6 +28,4 @@ class AnecdoteForm extends React.Component {
     )
   }
 }
-const ConnectedAnecdoteForm = connect(null,{ anecdoteCreation,createNotification,deleteNotification })(AnecdoteForm)
-
-export default ConnectedAnecdoteForm
+export default connect(null,{ anecdoteCreation,createNotification,deleteNotification })(AnecdoteForm)
