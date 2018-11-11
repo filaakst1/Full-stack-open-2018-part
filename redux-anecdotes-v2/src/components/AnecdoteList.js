@@ -7,7 +7,7 @@ import { voteNotification, deleteNotification } from '../reducers/notificationRe
 class AnecdoteList extends React.Component {
   voteAnecdote = (id) => (e) => {
     console.log('Vote click')
-    const anecdote = this.props.anecdotes.find(a => a.id === id)
+    const anecdote = this.props.anecdotesToShow.find(a => a.id === id)
 
     this.props.voteAnecdote(id)
     this.props.voteNotification(anecdote.content)
@@ -16,12 +16,12 @@ class AnecdoteList extends React.Component {
     }, 5000)
   }
   render() {
-    const { anecdotes } = this.props
+    const { anecdotesToShow } = this.props
     return (
       <div>
         <h2>Anecdotes</h2>
         <Filter />
-        {anecdotes.map(anecdote =>
+        {anecdotesToShow.map(anecdote =>
           <div key={anecdote.id}>
             <div>
               {anecdote.content}
@@ -45,7 +45,7 @@ const anecdotesToShow =(anacdotes, filter) => {
 }
 const mapStateToProps = (state) => {
   return {
-    anecdotes: anecdotesToShow(state.anecdotes,state.filter)
+    anecdotesToShow: anecdotesToShow(state.anecdotes,state.filter)
   }
 }
 export default connect(mapStateToProps,{ voteAnecdote, voteNotification, deleteNotification })(AnecdoteList)
