@@ -11,11 +11,11 @@ class AnecdoteList extends React.Component {
     this.props.anecdoteInitialization(anecdotes)
   }
 
-  voteAnecdote = (id) => (e) => {
+  voteAnecdote = (id)  => async (e) => {
     const anecdote = this.props.anecdotesToShow.find(a => a.id === id)
-
-    this.props.voteAnecdote(id)
-    this.props.voteNotification(anecdote.content)
+    const updated = await anecdoteService.update(anecdote)
+    this.props.voteAnecdote(updated)
+    this.props.voteNotification(updated)
     setTimeout(() => {
       this.props.deleteNotification()
     }, 5000)

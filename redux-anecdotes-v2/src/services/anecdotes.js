@@ -9,7 +9,17 @@ const getAll = async () => {
 const createNew = async (content) => {
 
   const response = await axios.post(baseUrl,{ content: content, votes:0 } )
-  console.log('Response'  + JSON.stringify(response))
+  console.log('Create response'  + JSON.stringify(response))
   return response.data
 }
-export default { getAll, createNew }
+const update = async (anecdote) => {
+  // Filter to send only required fields
+  const updateAnecdote = {
+    content: anecdote.content,
+    votes: anecdote.votes +1,
+  }
+  const response = await axios.put(baseUrl+'/' + anecdote.id, updateAnecdote)
+  console.log('Update response'  + JSON.stringify(response))
+  return response.data
+}
+export default { getAll, createNew,update }

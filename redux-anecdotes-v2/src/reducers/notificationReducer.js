@@ -9,7 +9,7 @@ const notificationReducer = (store = initialState, action) => {
   case 'CREATE_NOTIFICATION':
     return `Created '${action.data.content}'`
   case 'VOTE_NOTIFICATION':
-    return `you voted '${action.content}'`
+    return `you voted '${action.data.content}'`
   case 'DELETE_NOTIFICATION':
     return ''
   default:
@@ -24,11 +24,11 @@ export const createNotification = (data) => {
     data
   }
 }
-export const voteNotification = (content) => {
+export const voteNotification = (data) => {
 
   return {
     type: 'VOTE_NOTIFICATION',
-    content: content
+    data
   }
 }
 export const deleteNotification = () => {
