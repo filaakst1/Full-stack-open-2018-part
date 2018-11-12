@@ -7,7 +7,7 @@ const notificationReducer = (store = initialState, action) => {
   console.log('NOTIFICATION ACTION: ', action)
   switch(action.type) {
   case 'CREATE_NOTIFICATION':
-    return `Created '${action.content}'`
+    return `Created '${action.data.content}'`
   case 'VOTE_NOTIFICATION':
     return `you voted '${action.content}'`
   case 'DELETE_NOTIFICATION':
@@ -17,11 +17,11 @@ const notificationReducer = (store = initialState, action) => {
   }
 }
 
-export const createNotification = (content) => {
+export const createNotification = (data) => {
 
   return {
     type: 'CREATE_NOTIFICATION',
-    content: content
+    data
   }
 }
 export const voteNotification = (content) => {

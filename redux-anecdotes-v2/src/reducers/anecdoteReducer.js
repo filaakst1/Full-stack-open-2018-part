@@ -1,17 +1,14 @@
 
-const getId = () => (100000*Math.random()).toFixed(0)
-
 const anecdoteReducer = (store = [], action) => {
   console.log('ANECDOTE ACTION: ', action)
   switch(action.type) {
   case 'VOTE': {
-    console.log(`Voting for ${action.id}`)
     const old = store.filter(a => a.id !==action.id)
     const voted = store.find(a => a.id === action.id)
     return [...old, { ...voted, votes: voted.votes+1 } ]
   }
   case 'CREATE' : {
-    return [...store, { content: action.content, id: getId(), votes:0 }]
+    return [...store, action.data ]
   }
   case 'INIT_ANECDOTES': {
     return action.data
@@ -26,11 +23,11 @@ export const anecdoteInitialization = (data) => {
     data
   }
 }
-export const anecdoteCreation = (content) => {
+export const anecdoteCreation = (data) => {
 
   return {
     type: 'CREATE',
-    content: content
+    data
   }
 }
 export const voteAnecdote = (id) => {

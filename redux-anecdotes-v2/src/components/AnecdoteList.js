@@ -12,7 +12,6 @@ class AnecdoteList extends React.Component {
   }
 
   voteAnecdote = (id) => (e) => {
-    console.log('Vote click')
     const anecdote = this.props.anecdotesToShow.find(a => a.id === id)
 
     this.props.voteAnecdote(id)
@@ -45,7 +44,6 @@ class AnecdoteList extends React.Component {
   }
 }
 const anecdotesToShow =(anecdotes, filter) => {
-  console.log('#DEBUG: ',anecdotes)
   return anecdotes
     .filter(a => filter.length === 0 || a.content.includes(filter) )
     .sort((a, b) => b.votes - a.votes)
