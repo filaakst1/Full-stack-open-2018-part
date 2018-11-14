@@ -6,9 +6,7 @@ import { voteNotification, deleteNotification } from '../reducers/notificationRe
 import anecdoteService from '../services/anecdotes'
 class AnecdoteList extends React.Component {
   componentDidMount = async () => {
-
-    const anecdotes =await anecdoteService.getAll()
-    this.props.anecdoteInitialization(anecdotes)
+    this.props.anecdoteInitialization()
   }
 
   voteAnecdote = (id)  => async (e) => {

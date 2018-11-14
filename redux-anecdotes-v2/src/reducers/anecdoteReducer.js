@@ -1,10 +1,11 @@
+import anecdoteService from '../services/anecdotes'
+
 
 const anecdoteReducer = (store = [], action) => {
   console.log('ANECDOTE ACTION: ', action)
   switch(action.type) {
   case 'VOTE': {
     const old = store.filter(a => a.id !==action.data.id)
-   // const voted = store.find(a => a.id === action.data.id)
     return [...old, action.data ]
   }
   case 'CREATE' : {
@@ -17,10 +18,14 @@ const anecdoteReducer = (store = [], action) => {
     return store
   }
 }
-export const anecdoteInitialization = (data) => {
-  return {
-    type: 'INIT_ANECDOTES',
-    data
+
+export const anecdoteInitialization = () => {
+  return async (dispatch) => {
+    const anecdotes = await anecdoteService.getAll()
+    dispatch({
+      type: 'INIT_ANECDOTES',
+      data : anecdotes
+    })
   }
 }
 export const anecdoteCreation = (data) => {
