@@ -14,11 +14,10 @@ const createNew = async (content) => {
 }
 const update = async (anecdote) => {
   // Filter to send only required fields
-  const updateAnecdote = {
+  const response = await axios.put(baseUrl+'/' + anecdote.id, {
     content: anecdote.content,
-    votes: anecdote.votes +1,
-  }
-  const response = await axios.put(baseUrl+'/' + anecdote.id, updateAnecdote)
+    votes: anecdote.votes
+  })
   console.log('Update response'  + JSON.stringify(response))
   return response.data
 }
