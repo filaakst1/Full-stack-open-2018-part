@@ -28,10 +28,14 @@ export const anecdoteInitialization = () => {
     })
   }
 }
-export const anecdoteCreation = (data) => {
-  return {
-    type: 'CREATE',
-    data
+export const anecdoteCreation = (content) => {
+  return async (dispatch) => {
+    const newAnecdote = await anecdoteService.createNew(content)
+    dispatch(
+      {
+        type: 'CREATE',
+        data: newAnecdote
+      })
   }
 }
 
