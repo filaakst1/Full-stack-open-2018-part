@@ -47,6 +47,22 @@ const Footer = () => (
   </div>
 )
 
+const Notification = ({notification}) => {
+  const style =  { 
+    display: notification.length === 0 ? 'none' : '',
+    color: 'green',
+    borderStyle: 'solid',
+    margin: '10px',
+    padding: '10px',
+    borderRadius: '10px',
+    borderWidth: '2px'
+  }
+  return(
+    <div style={style} >
+      {notification}
+    </div>
+  )
+}
 class CreateNew extends React.Component {
   constructor() {
     super()
@@ -70,7 +86,7 @@ class CreateNew extends React.Component {
       info: this.state.info,
       votes: 0
     })
-    this.props.notify(`a new anecdote ${this.state.content} created!`,10)
+    this.props.notify(`a new anecdote '${this.state.content}' created!`,10)
     this.props.history.push('/')
   }
 
@@ -156,12 +172,8 @@ class App extends React.Component {
          <h1>Software anecdotes</h1>
          <Router>
            <div>
-            <div>
-                <Menu />
-            </div>
-            <div style={this.state.notification.length === 0 ? { display: 'none' } : {}}>
-                {this.state.notification}
-            </div>
+            <Menu />
+            <Notification notification= {this.state.notification}/>
             <div>
               <Route exact path="/" render={() => <AnecdoteList anecdotes={this.state.anecdotes} />} />
               <Route exact path="/anecdotes/:id" render={({match}) =>
