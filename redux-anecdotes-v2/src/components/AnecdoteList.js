@@ -13,7 +13,7 @@ class AnecdoteList extends React.Component {
     this.props.voteAnecdote(anecdote)
     this.props.notify(`you voted '${anecdote.content}'`, 5)
   }
-  
+
   render() {
     const { anecdotesToShow } = this.props
     return (
