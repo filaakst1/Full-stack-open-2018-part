@@ -1,13 +1,13 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Link, NavLink} from 'react-router-dom'
-
+import { BrowserRouter as Router, Route, NavLink} from 'react-router-dom'
+import { ListGroup,ListGroupItem  } from 'react-bootstrap'
 const Menu = () => { 
   const style = {
     backgroundColor: 'LightBlue',
     padding: '15px'
   }
   const activeStyle = {
-    backgroundColor: 'Grey',
+    backgroundColor: 'white',
     paddingTop: '15px',
     paddingBottom: '15px'
   }
@@ -23,9 +23,9 @@ const Menu = () => {
 const AnecdoteList = ({ anecdotes }) => (
   <div>
     <h2>Anecdotes</h2>
-    <ul>
-      {anecdotes.map(anecdote => <li key={anecdote.id} ><Link to={`/anecdotes/${anecdote.id}`}>{anecdote.content}</Link></li>)}
-    </ul>  
+    <ListGroup>
+      {anecdotes.map(anecdote => <ListGroupItem key={anecdote.id} href={`/anecdotes/${anecdote.id}`}>{anecdote.content}</ListGroupItem>)}
+    </ListGroup>
   </div>
 )
 const About = () => (
@@ -179,7 +179,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
          <h1>Software anecdotes</h1>
          <Router>
            <div>
