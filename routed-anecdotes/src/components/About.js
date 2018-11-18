@@ -1,6 +1,5 @@
 import React from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
-
 import image from '../hinton.jpeg'
 
 const About = () => (
