@@ -1,21 +1,30 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Nav, Navbar, NavItem } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
+
 
 const Menu = () => {
-  const style = {
-    backgroundColor: 'LightBlue',
-    padding: '15px'
-  }
-  const activeStyle = {
-    backgroundColor: 'white',
-    paddingTop: '15px',
-    paddingBottom: '15px'
-  }
   return(
-    <div style={style} >
-      <NavLink exact to="/" activeStyle={activeStyle} >anecdotes</NavLink>&nbsp;
-      <NavLink exact to="/create" activeStyle={activeStyle} >create new</NavLink>&nbsp;
-      <NavLink exact to="/about" activeStyle={activeStyle} >about</NavLink>&nbsp;
+    <div>
+      <Navbar inverse  >
+        <Navbar.Header>
+          <Navbar.Brand>Software anecdotes</Navbar.Brand>
+          <Navbar.Toggle />
+        </Navbar.Header>
+        <Navbar.Collapse>
+          <Nav tabs='true' color='light' light='true'>
+            <LinkContainer to='/' >
+              <NavItem>anecdotes</NavItem>
+            </LinkContainer>
+            <LinkContainer to='/create' >
+              <NavItem>create new</NavItem>
+            </LinkContainer>
+            <LinkContainer to='/about' >
+              <NavItem>about</NavItem>
+            </LinkContainer>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     </div>
   )
 }

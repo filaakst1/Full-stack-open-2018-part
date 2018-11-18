@@ -62,7 +62,6 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <h1>Software anecdotes</h1>
         <Router>
           <div>
             <Menu />
