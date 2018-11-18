@@ -80,8 +80,8 @@ class App extends React.Component {
         </Router>
         <Footer />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
