@@ -1,6 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, NavLink} from 'react-router-dom'
-import { ListGroup,ListGroupItem, Grid, Row, Col } from 'react-bootstrap'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import About from './components/About'
 import Anecdote from './components/Anecdote'
 import AnecdoteList from './components/AnecdoteList'
